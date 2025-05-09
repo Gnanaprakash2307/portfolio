@@ -7,28 +7,19 @@
     <style>
         /* ===== GLOBAL STYLES ===== */
         :root {
-            /* Apple Mode Colors */
             --apple-bg: #f5f5f7;
             --apple-text: #1d1d1f;
             --apple-accent: #0071e3;
             --apple-card: rgba(255, 255, 255, 0.7);
             --apple-shadow: rgba(0, 0, 0, 0.1);
-            --apple-gradient-1: #f8f9fa;
-            --apple-gradient-2: #e9ecef;
-            
-            /* Hacker Mode Colors */
             --hacker-bg: #000000;
             --hacker-text: #00ff00;
             --hacker-accent: #39ff14;
             --hacker-card: rgba(0, 20, 0, 0.7);
             --hacker-shadow: rgba(0, 255, 0, 0.2);
-            
-            /* Transition Speed */
             --transition-speed: 0.5s;
-            
-            /* Fonts */
-            --font-primary: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            --font-mono: 'SF Mono', Consolas, Monaco, 'Courier New', monospace;
+            --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            --font-mono: 'SF Mono', 'Courier New', Courier, monospace;
         }
 
         * {
@@ -45,7 +36,6 @@
             line-height: 1.6;
             overflow-x: hidden;
             padding-bottom: 80px;
-            transition: all var(--transition-speed);
         }
 
         body.hacker-mode {
@@ -61,15 +51,10 @@
         }
 
         section {
-            margin: 80px 0;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        section.visible {
+            margin: 60px 0;
             opacity: 1;
             transform: translateY(0);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -134,7 +119,7 @@
 
         /* ===== HEADER STYLES ===== */
         header {
-            padding: 120px 0 80px;
+            padding: 100px 0 50px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -146,12 +131,10 @@
         }
 
         .name {
-            font-size: 4.5rem;
+            font-size: 4rem;
             font-weight: 700;
             margin-bottom: 20px;
             letter-spacing: -1px;
-            position: relative;
-            display: inline-block;
         }
 
         body.hacker-mode .name {
@@ -161,29 +144,14 @@
         }
 
         .tagline {
-            font-size: 1.8rem;
-            height: 50px;
+            font-size: 1.5rem;
+            height: 40px;
             margin-bottom: 30px;
             font-weight: 300;
         }
 
         body.hacker-mode .tagline {
             font-family: var(--font-mono);
-            color: var(--hacker-accent);
-        }
-
-        .quote {
-            font-size: 1.2rem;
-            font-style: italic;
-            opacity: 0;
-            height: 30px;
-            margin-top: 20px;
-            display: none;
-        }
-
-        body.hacker-mode .quote {
-            display: block;
-            opacity: 1;
             color: var(--hacker-accent);
         }
 
@@ -201,13 +169,11 @@
             box-shadow: 0 5px 15px var(--apple-shadow);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            transition: all var(--transition-speed);
         }
 
         body.hacker-mode .toggle-container {
             background: var(--hacker-card);
             box-shadow: 0 5px 15px var(--hacker-shadow);
-            border: 1px solid var(--hacker-accent);
         }
 
         .toggle-label {
@@ -261,29 +227,6 @@
             transform: translateX(30px);
         }
 
-        /* Sound Toggle */
-        .sound-toggle {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            background: var(--apple-card);
-            padding: 10px 15px;
-            border-radius: 30px;
-            box-shadow: 0 5px 15px var(--apple-shadow);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: all var(--transition-speed);
-        }
-
-        body.hacker-mode .sound-toggle {
-            background: var(--hacker-card);
-            box-shadow: 0 5px 15px var(--hacker-shadow);
-            border: 1px solid var(--hacker-accent);
-        }
-
         /* ===== CARD STYLES ===== */
         .card {
             background: var(--apple-card);
@@ -294,7 +237,7 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color var(--transition-speed);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         body.hacker-mode .card {
@@ -343,16 +286,10 @@
             font-family: var(--font-mono);
             font-size: 0.9rem;
             font-weight: bold;
-            transition: all 0.3s ease;
         }
 
         body.hacker-mode .run-btn {
             display: inline-block;
-        }
-
-        .run-btn:hover {
-            background-color: #2bff00;
-            transform: scale(1.05);
         }
 
         .terminal-output {
@@ -374,7 +311,7 @@
         }
 
         .terminal-output.active {
-            height: 150px;
+            height: 120px;
         }
 
         /* ===== SKILLS STYLES ===== */
@@ -434,7 +371,6 @@
             align-items: center;
             gap: 10px;
             z-index: 100;
-            animation: pulse 2s infinite;
         }
 
         body.hacker-mode .resume-btn {
@@ -442,7 +378,6 @@
             color: var(--hacker-bg);
             box-shadow: 0 5px 15px rgba(0, 255, 0, 0.4);
             font-family: var(--font-mono);
-            animation: glowPulse 2s infinite;
         }
 
         .resume-btn:hover {
@@ -452,30 +387,6 @@
 
         body.hacker-mode .resume-btn:hover {
             box-shadow: 0 8px 20px rgba(0, 255, 0, 0.5);
-        }
-
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(0, 113, 227, 0.4);
-            }
-            70% {
-                box-shadow: 0 0 0 10px rgba(0, 113, 227, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(0, 113, 227, 0);
-            }
-        }
-
-        @keyframes glowPulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.4);
-            }
-            70% {
-                box-shadow: 0 0 0 10px rgba(0, 255, 0, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(0, 255, 0, 0);
-            }
         }
 
         /* ===== CONTACT STYLES ===== */
@@ -492,7 +403,7 @@
             padding: 15px;
             border-radius: 10px;
             background-color: var(--apple-card);
-            transition: transform 0.3s ease, background-color var(--transition-speed);
+            transition: transform 0.3s ease;
         }
 
         body.hacker-mode .contact-item {
@@ -506,7 +417,6 @@
         .contact-icon {
             font-size: 1.5rem;
             color: var(--apple-accent);
-            transition: color var(--transition-speed);
         }
 
         body.hacker-mode .contact-icon {
@@ -524,7 +434,6 @@
             margin: 30px 0;
             position: relative;
             overflow: hidden;
-            border: 1px solid var(--hacker-accent);
         }
 
         body.hacker-mode .terminal-greeting {
@@ -578,236 +487,6 @@
             animation: glitch 3s infinite;
         }
 
-        /* ===== CRT EFFECT ===== */
-        body.hacker-mode::before {
-            content: " ";
-            display: block;
-            position: fixed;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            z-index: 2;
-            background-size: 100% 2px, 3px 100%;
-            pointer-events: none;
-            opacity: 0.15;
-        }
-
-        /* ===== MATRIX BACKGROUND ===== */
-        #matrix-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity var(--transition-speed);
-        }
-
-        body.hacker-mode #matrix-canvas {
-            opacity: 0.15;
-        }
-
-        /* ===== PARALLAX EFFECT ===== */
-        .parallax-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            background: linear-gradient(135deg, var(--apple-gradient-1) 0%, var(--apple-gradient-2) 100%);
-            transition: opacity var(--transition-speed);
-        }
-
-        body.hacker-mode .parallax-bg {
-            opacity: 0;
-        }
-
-        .parallax-shapes {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
-        }
-
-        .shape {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            transition: all var(--transition-speed);
-        }
-
-        body.hacker-mode .shape {
-            background: rgba(0, 255, 0, 0.1);
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
-        }
-
-        /* ===== TERMINAL WINDOW ===== */
-        .terminal-window {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            width: 80%;
-            max-width: 800px;
-            height: 500px;
-            background-color: rgba(0, 0, 0, 0.9);
-            border: 1px solid var(--hacker-accent);
-            border-radius: 10px;
-            z-index: 1001;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .terminal-window.active {
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        .terminal-header {
-            background-color: rgba(0, 20, 0, 0.8);
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--hacker-accent);
-        }
-
-        .terminal-title {
-            color: var(--hacker-text);
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-        }
-
-        .terminal-close {
-            background: none;
-            border: none;
-            color: var(--hacker-text);
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-
-        .terminal-body {
-            flex: 1;
-            padding: 15px;
-            color: var(--hacker-text);
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            overflow-y: auto;
-        }
-
-        .terminal-input {
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-        }
-
-        .terminal-prompt {
-            color: var(--hacker-accent);
-            margin-right: 10px;
-        }
-
-        .terminal-command {
-            background: none;
-            border: none;
-            color: var(--hacker-text);
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            flex: 1;
-            outline: none;
-        }
-
-        .terminal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .terminal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        /* ===== TERMINAL BUTTON ===== */
-        .terminal-btn {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%) scale(0);
-            background-color: var(--hacker-accent);
-            color: var(--hacker-bg);
-            border: none;
-            padding: 12px 25px;
-            border-radius: 30px;
-            font-weight: 600;
-            font-family: var(--font-mono);
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.4);
-            transition: all 0.3s ease;
-            z-index: 100;
-        }
-
-        body.hacker-mode .terminal-btn {
-            transform: translateX(-50%) scale(1);
-        }
-
-        .terminal-btn:hover {
-            transform: translateX(-50%) scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 255, 0, 0.5);
-        }
-
-        /* ===== TOOLTIP ===== */
-        [data-tooltip] {
-            position: relative;
-            cursor: pointer;
-        }
-
-        [data-tooltip]::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: 125%;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--apple-card);
-            color: var(--apple-text);
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-            box-shadow: 0 5px 15px var(--apple-shadow);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            z-index: 10;
-        }
-
-        body.hacker-mode [data-tooltip]::after {
-            background-color: var(--hacker-card);
-            color: var(--hacker-text);
-            border: 1px solid var(--hacker-accent);
-            box-shadow: 0 5px 15px var(--hacker-shadow);
-        }
-
-        [data-tooltip]:hover::after {
-            opacity: 1;
-        }
-
         /* ===== RESPONSIVE STYLES ===== */
         @media (max-width: 768px) {
             h1 {
@@ -822,11 +501,6 @@
                 font-size: 3rem;
             }
             
-            .tagline {
-                font-size: 1.5rem;
-                height: 40px;
-            }
-            
             .projects-grid, .skills-container, .contact-grid {
                 grid-template-columns: 1fr;
             }
@@ -839,11 +513,6 @@
                 top: 10px;
                 right: 10px;
             }
-            
-            .terminal-window {
-                width: 95%;
-                height: 400px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -853,7 +522,6 @@
             
             .tagline {
                 font-size: 1.2rem;
-                height: 30px;
             }
             
             section {
@@ -863,11 +531,6 @@
             .card {
                 padding: 20px;
             }
-            
-            .resume-btn, .sound-toggle {
-                padding: 8px 15px;
-                font-size: 0.8rem;
-            }
         }
     </style>
 </head>
@@ -875,62 +538,24 @@
     <!-- Toggle Switch -->
     <div class="toggle-container">
         <span class="toggle-label">My Hack</span>
-        <label class="toggle" data-tooltip="Ctrl + H to toggle">
+        <label class="toggle">
             <input type="checkbox" id="mode-toggle">
             <span class="slider"></span>
         </label>
     </div>
 
-    <!-- Sound Toggle -->
-    <div class="sound-toggle">
-        <span class="toggle-label">Sound</span>
-        <label class="toggle">
-            <input type="checkbox" id="sound-toggle">
-            <span class="slider"></span>
-        </label>
-    </div>
-
     <!-- Resume Download Button -->
-    <a href="./assets/resume.pdf" class="resume-btn" download data-tooltip="Download my resume">
+    <a href="./assets/resume.pdf" class="resume-btn" download>
         <span class="resume-icon">📄</span>
         <span>Download Resume</span>
     </a>
-
-    <!-- Terminal Button (visible only in hacker mode) -->
-    <button class="terminal-btn" id="terminal-btn" data-tooltip="Open terminal interface">Activate Terminal</button>
-
-    <!-- Terminal Window -->
-    <div class="terminal-overlay" id="terminal-overlay"></div>
-    <div class="terminal-window" id="terminal-window">
-        <div class="terminal-header">
-            <div class="terminal-title">Gnanaprakash@system:~</div>
-            <button class="terminal-close" id="terminal-close">×</button>
-        </div>
-        <div class="terminal-body" id="terminal-body">
-            <div>Welcome to Gnanaprakash's Terminal v1.0.0</div>
-            <div>Type 'help' for available commands.</div>
-            <div class="terminal-input">
-                <span class="terminal-prompt">$</span>
-                <input type="text" class="terminal-command" id="terminal-command" autocomplete="off" spellcheck="false">
-            </div>
-        </div>
-    </div>
-
-    <!-- Parallax Background -->
-    <div class="parallax-bg">
-        <div class="parallax-shapes" id="parallax-shapes"></div>
-    </div>
-
-    <!-- Matrix Canvas -->
-    <canvas id="matrix-canvas"></canvas>
 
     <!-- Header Section -->
     <header>
         <div class="container">
             <div class="header-content">
-                <h1 class="name" data-tooltip="Tap here for magic">Gnanaprakash B</h1>
+                <h1 class="name">Gnanaprakash B</h1>
                 <div class="tagline" id="tagline"></div>
-                <div class="quote" id="quote"></div>
             </div>
         </div>
     </header>
@@ -962,7 +587,7 @@
                 <div class="card project-card">
                     <div class="project-title">
                         <span>SkillHaat</span>
-                        <button class="run-btn" data-project="SkillHaat">RUN</button>
+                        <button class="run-btn" data-project="SkillHaat">Run</button>
                     </div>
                     <p>A platform connecting students with local skilled laborers. Features include UPI payment integration, a multilingual UI, a rating system, and AI-based job matching. The project aims to empower local businesses and bridge skill gaps in communities.</p>
                     <div class="terminal-output" id="terminal-SkillHaat"></div>
@@ -971,7 +596,7 @@
                 <div class="card project-card">
                     <div class="project-title">
                         <span>EduEase – AI Education App</span>
-                        <button class="run-btn" data-project="EduEase">RUN</button>
+                        <button class="run-btn" data-project="EduEase">Run</button>
                     </div>
                     <p>An Android app for gamified, AI-powered learning for kids. It supports multilingual interfaces and interactive lessons, presented at the College Hackathon 2025. The app adapts to individual learning paces, enhancing engagement and retention.</p>
                     <div class="terminal-output" id="terminal-EduEase"></div>
@@ -980,7 +605,7 @@
                 <div class="card project-card">
                     <div class="project-title">
                         <span>VibeNews – Sentiment-Based News Summarizer</span>
-                        <button class="run-btn" data-project="VibeNews">RUN</button>
+                        <button class="run-btn" data-project="VibeNews">Run</button>
                     </div>
                     <p>A news summarizer app that uses NLP and sentiment analysis to personalize content based on user emotions. It tailors news feeds to enhance user experience, offering more relevant content based on mood and interests.</p>
                     <div class="terminal-output" id="terminal-VibeNews"></div>
@@ -989,7 +614,7 @@
                 <div class="card project-card">
                     <div class="project-title">
                         <span>Financial Advisor Chatbot</span>
-                        <button class="run-btn" data-project="FinancialAdvisor">RUN</button>
+                        <button class="run-btn" data-project="FinancialAdvisor">Run</button>
                     </div>
                     <p>A Python-based conversational AI offering personal budgeting tips and finance advice, presented at the College Hackathon 2025. The chatbot provides personalized financial guidance to users, helping them manage their finances more effectively.</p>
                     <div class="terminal-output" id="terminal-FinancialAdvisor"></div>
@@ -998,7 +623,7 @@
                 <div class="card project-card">
                     <div class="project-title">
                         <span>Ace – Voice-Controlled Smart Assistant Robot</span>
-                        <button class="run-btn" data-project="Ace">RUN</button>
+                        <button class="run-btn" data-project="Ace">Run</button>
                     </div>
                     <p>An AI-powered robot capable of voice commands, integrating speech recognition, basic task execution, and natural language processing. Designed as a personal assistant robot, "Ace" showcases IoT integration, embedded controls, and real-time response systems.</p>
                     <div class="terminal-output" id="terminal-Ace"></div>
@@ -1007,7 +632,7 @@
                 <div class="card project-card">
                     <div class="project-title">
                         <span>DriftX – Multi-Mode RC Racing Bot</span>
-                        <button class="run-btn" data-project="DriftX">RUN</button>
+                        <button class="run-btn" data-project="DriftX">Run</button>
                     </div>
                     <p>A versatile competition-grade RC bot with smart mode switching between manual remote control and autonomous navigation using PID line following, ultrasonic obstacle avoidance, and real-time camera feed. Features real-time telemetry, a mobile dashboard, and efficient embedded control using microcontrollers.</p>
                     <div class="terminal-output" id="terminal-DriftX"></div>
@@ -1019,7 +644,7 @@
     <!-- Skills Section -->
     <section id="skills">
         <div class="container">
-            <h2>Skills & Tools</h2>
+            <h2>Technical Skills</h2>
             <div class="card">
                 <div class="skills-container">
                     <div class="skill-category">
@@ -1089,6 +714,22 @@
         </div>
     </section>
 
+    <!-- Achievements Section -->
+    <section id="achievements">
+        <div class="container">
+            <h2>Achievements</h2>
+            <div class="card">
+                <ul class="skill-list">
+                    <li>Built 10+ mini projects using Python and Java GUIs</li>
+                    <li>Building two Bot Remote-Controlled cars</li>
+                    <li>Solved 100+ LeetCode problems in algorithms and data structures</li>
+                    <li>Member – Renewable Energy Club, MSEC</li>
+                    <li>Chess – 2nd Prize, District-Level Competition</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
     <!-- Electrical Engineering Section -->
     <section id="electrical">
         <div class="container">
@@ -1105,17 +746,19 @@
         </div>
     </section>
 
-    <!-- Achievements Section -->
-    <section id="achievements">
+    <!-- Areas of Interest Section -->
+    <section id="interests">
         <div class="container">
-            <h2>Achievements</h2>
+            <h2>Areas of Interest</h2>
             <div class="card">
                 <ul class="skill-list">
-                    <li>Built 10+ mini projects using Python and Java GUIs</li>
-                    <li>Building two Bot Remote-Controlled cars</li>
-                    <li>Solved 100+ LeetCode problems in algorithms and data structures</li>
-                    <li>Member – Renewable Energy Club, MSEC</li>
-                    <li>Chess – 2nd Prize, District-Level Competition</li>
+                    <li>Artificial Intelligence & Data Science</li>
+                    <li>Full-Stack Development</li>
+                    <li>Embedded Systems & IoT</li>
+                    <li>Cybersecurity Fundamentals</li>
+                    <li>Open Source Contribution</li>
+                    <li>Product Design (User-Centric Approach)</li>
+                    <li>Reverse Engineering</li>
                 </ul>
             </div>
         </div>
@@ -1141,23 +784,23 @@
         <div class="container">
             <h2>Contact</h2>
             <div class="contact-grid">
-                <a href="mailto:gnanaprakash230706@gmail.com" class="contact-item" data-tooltip="Send me an email">
+                <a href="mailto:gnanaprakash230706@gmail.com" class="contact-item">
                     <span class="contact-icon">✉️</span>
                     <span>gnanaprakash230706@gmail.com</span>
                 </a>
-                <a href="tel:+916374151499" class="contact-item" data-tooltip="Call me">
+                <a href="tel:+916374151499" class="contact-item">
                     <span class="contact-icon">📱</span>
                     <span>+91 6374151499</span>
                 </a>
-                <a href="https://www.linkedin.com/in/gnanaprakash-babu-b50321341" target="_blank" class="contact-item" data-tooltip="Connect on LinkedIn">
+                <a href="https://www.linkedin.com/in/gnanaprakash-babu-b50321341" target="_blank" class="contact-item">
                     <span class="contact-icon">🔗</span>
                     <span>LinkedIn</span>
                 </a>
-                <a href="https://github.com/gnanaprakashb" target="_blank" class="contact-item" data-tooltip="Check my GitHub">
+                <a href="https://github.com/gnanaprakashb" target="_blank" class="contact-item">
                     <span class="contact-icon">💻</span>
                     <span>GitHub</span>
                 </a>
-                <a href="https://gnanaprakashb.netlify.app/" target="_blank" class="contact-item" data-tooltip="Visit my website">
+                <a href="https://gnanaprakashb.netlify.app/" target="_blank" class="contact-item">
                     <span class="contact-icon">🌐</span>
                     <span>Website</span>
                 </a>
@@ -1165,73 +808,28 @@
         </div>
     </section>
 
-    <!-- Audio Elements -->
-    <audio id="typing-sound" preload="auto">
-        <source src="data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//tAwAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAADwAD///////////////////////////////////////////8AAAA8TEFNRTMuMTAwBK8AAAAAAAAAABUgJAJAQQABmgAAA8BZtc/OAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//sQxAADwAABpAAAACAAADSAAAAETEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVU=" type="audio/mp3">
-    </audio>
-    <audio id="click-sound" preload="auto">
-        <source src="data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//tAwAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAADwAD///////////////////////////////////////////8AAAA8TEFNRTMuMTAwBK8AAAAAAAAAABUgJAJAQQABmgAAA8BZtc/OAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//sQxAADwAABpAAAACAAADSAAAAETEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVU=" type="audio/mp3">
-    </audio>
-    <audio id="beep-sound" preload="auto">
-        <source src="data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//tAwAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAADwAD///////////////////////////////////////////8AAAA8TEFNRTMuMTAwBK8AAAAAAAAAABUgJAJAQQABmgAAA8BZtc/OAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//sQxAADwAABpAAAACAAADSAAAAETEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVU=" type="audio/mp3">
-    </audio>
-    <audio id="ambient-sound" preload="auto" loop>
-        <source src="data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//tAwAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAADwAD///////////////////////////////////////////8AAAA8TEFNRTMuMTAwBK8AAAAAAAAAABUgJAJAQQABmgAAA8BZtc/OAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//sQxAADwAABpAAAACAAADSAAAAETEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVU=" type="audio/mp3">
-    </audio>
-
     <script>
         // DOM Elements
         const body = document.body;
         const modeToggle = document.getElementById('mode-toggle');
-        const soundToggle = document.getElementById('sound-toggle');
         const taglineElement = document.getElementById('tagline');
-        const quoteElement = document.getElementById('quote');
         const terminalGreeting = document.getElementById('terminal-greeting');
         const greetingText = document.getElementById('greeting-text');
         const runButtons = document.querySelectorAll('.run-btn');
         const terminalOutputs = document.querySelectorAll('.terminal-output');
-        const matrixCanvas = document.getElementById('matrix-canvas');
-        const parallaxShapes = document.getElementById('parallax-shapes');
-        const terminalBtn = document.getElementById('terminal-btn');
-        const terminalWindow = document.getElementById('terminal-window');
-        const terminalOverlay = document.getElementById('terminal-overlay');
-        const terminalClose = document.getElementById('terminal-close');
-        const terminalBody = document.getElementById('terminal-body');
-        const terminalCommand = document.getElementById('terminal-command');
-        const nameElement = document.querySelector('.name');
-
-        // Audio Elements
-        const typingSound = document.getElementById('typing-sound');
-        const clickSound = document.getElementById('click-sound');
-        const beepSound = document.getElementById('beep-sound');
-        const ambientSound = document.getElementById('ambient-sound');
-
-        // Set canvas dimensions
-        matrixCanvas.width = window.innerWidth;
-        matrixCanvas.height = window.innerHeight;
 
         // Taglines for typing effect
         const taglines = [
             "Electrical Engineer",
             "AI Enthusiast",
-            "Software Innovator",
-            "Creator of DriftX & Ace"
-        ];
-
-        // Quotes for hacker mode
-        const quotes = [
-            "You only see the surface.",
-            "Good during the day. Dangerous at night.",
-            "0s and 1s obey me.",
-            "Behind every system, there's a way in.",
-            "Not all who wander are lost in the code."
+            "Software Innovator"
         ];
 
         // Terminal greeting messages
         const greetingMessages = [
-            "> Initiating identity shift...",
-            "> Activating protocols...",
-            "> Access granted to Gnanaprakash's inner core."
+            "> Hello, stranger. Welcome to Gnanaprakash's domain...",
+            "> Loading credentials...",
+            "> Access granted."
         ];
 
         // Project terminal outputs
@@ -1272,27 +870,13 @@
                 "> [✔] Ace Activated"
             ],
             DriftX: [
-                "> Initializing DriftX...",
-                "> PID Controller loaded.",
-                "> Obstacle avoidance active.",
+                "> Initializing project: DriftX",
                 "> Connecting to telemetry modules...",
-                "> Drift mode: ENABLED"
+                "> Loading PID controller...",
+                "> Calibrating sensors...",
+                "> [✔] System Online"
             ]
         };
-
-        // Terminal commands
-        const terminalCommands = {
-            help: "Available commands: help, about, projects, skills, contact, clear, exit",
-            about: "Gnanaprakash B - Electrical Engineer & AI Enthusiast\nResourceful and driven Electrical Engineering student with a strong foundation in software development and AI.",
-            projects: "Projects:\n- SkillHaat: Platform connecting students with local skilled laborers\n- EduEase: AI Education App\n- VibeNews: Sentiment-Based News Summarizer\n- Financial Advisor Chatbot\n- Ace: Voice-Controlled Smart Assistant Robot\n- DriftX: Multi-Mode RC Racing Bot",
-            skills: "Skills:\n- Languages: Python, C, C++, Java, HTML, CSS, MySQL\n- Tools: MATLAB, Apache NetBeans, Android Studio, Git, Ubuntu/Linux\n- Domains: AI Integration, Data Structures & Algorithms, GUI & Web Development, Embedded Systems",
-            contact: "Contact:\n- Email: gnanaprakash230706@gmail.com\n- Phone: +91 6374151499\n- LinkedIn: gnanaprakash-babu-b50321341\n- GitHub: gnanaprakashb",
-            clear: "clear",
-            exit: "exit"
-        };
-
-        // Sound state
-        let soundEnabled = false;
 
         // Typing effect function
         function typeText(element, text, speed = 50) {
@@ -1303,12 +887,6 @@
                     if (i < text.length) {
                         element.textContent += text.charAt(i);
                         i++;
-                        
-                        // Play typing sound if enabled
-                        if (soundEnabled && i % 3 === 0) {
-                            playSound(typingSound);
-                        }
-                        
                         setTimeout(type, speed);
                     } else {
                         setTimeout(resolve, 1000);
@@ -1316,14 +894,6 @@
                 }
                 type();
             });
-        }
-
-        // Play sound function
-        function playSound(sound) {
-            if (soundEnabled) {
-                sound.currentTime = 0;
-                sound.play().catch(e => console.log("Audio play error:", e));
-            }
         }
 
         // Cycle through taglines with typing effect
@@ -1345,31 +915,12 @@
             }
         }
 
-        // Cycle through quotes
-        async function cycleQuotes() {
-            let currentIndex = 0;
-            
-            while (true) {
-                if (body.classList.contains('hacker-mode')) {
-                    quoteElement.style.opacity = '0';
-                    await new Promise(resolve => setTimeout(resolve, 500));
-                    await typeText(quoteElement, quotes[currentIndex], 30);
-                    quoteElement.style.opacity = '1';
-                    await new Promise(resolve => setTimeout(resolve, 4000));
-                    currentIndex = (currentIndex + 1) % quotes.length;
-                } else {
-                    await new Promise(resolve => setTimeout(resolve, 1000));
-                }
-            }
-        }
-
         // Terminal greeting animation
         async function showTerminalGreeting() {
             greetingText.textContent = '';
             for (const message of greetingMessages) {
-                await typeText(greetingText, message, 30);
+                await typeText(greetingText, message);
                 greetingText.textContent += '\n';
-                playSound(beepSound);
             }
         }
 
@@ -1379,112 +930,57 @@
             terminalElement.textContent = '';
             terminalElement.classList.add('active');
             
-            playSound(beepSound);
-            
             for (const line of projectOutputs[projectName]) {
                 await typeText(terminalElement, line, 30);
                 terminalElement.textContent += '\n';
             }
         }
 
-        // Matrix effect
-        function drawMatrix() {
-            const ctx = matrixCanvas.getContext('2d');
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-            ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-            
-            ctx.fillStyle = '#0f0';
-            ctx.font = '10px monospace';
-            
-            const columns = matrixCanvas.width / 20;
-            const drops = [];
-            
-            for (let i = 0; i < columns; i++) {
-                drops[i] = 1;
+        // Toggle between Apple and Hacker modes
+        modeToggle.addEventListener('change', function() {
+            if (this.checked) {
+                body.classList.add('hacker-mode');
+                showTerminalGreeting();
+            } else {
+                body.classList.remove('hacker-mode');
+                terminalOutputs.forEach(output => {
+                    output.classList.remove('active');
+                });
             }
-            
-            function draw() {
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-                ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-                
-                ctx.fillStyle = '#0f0';
-                ctx.font = '10px monospace';
-                
-                for (let i = 0; i < drops.length; i++) {
-                    const text = String.fromCharCode(Math.floor(Math.random() * 128));
-                    ctx.fillText(text, i * 20, drops[i] * 20);
-                    
-                    if (drops[i] * 20 > matrixCanvas.height && Math.random() > 0.975) {
-                        drops[i] = 0;
-                    }
-                    
-                    drops[i]++;
-                }
-                
-                if (body.classList.contains('hacker-mode')) {
-                    requestAnimationFrame(draw);
-                }
-            }
-            
-            draw();
-        }
+        });
 
-        // Create parallax shapes
-        function createParallaxShapes() {
-            const shapesCount = 10;
-            
-            for (let i = 0; i < shapesCount; i++) {
-                const shape = document.createElement('div');
-                shape.classList.add('shape');
-                
-                const size = Math.random() * 200 + 50;
-                const left = Math.random() * 100;
-                const top = Math.random() * 100;
-                
-                shape.style.width = `${size}px`;
-                shape.style.height = `${size}px`;
-                shape.style.left = `${left}%`;
-                shape.style.top = `${top}%`;
-                
-                parallaxShapes.appendChild(shape);
-            }
-        }
+        // Run button event listeners
+        runButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const projectName = this.getAttribute('data-project');
+                runProjectTerminal(projectName);
+            });
+        });
 
-        // Parallax effect on mouse move
-        function handleParallax(e) {
-            const shapes = document.querySelectorAll('.shape');
-            const mouseX = e.clientX / window.innerWidth;
-            const mouseY = e.clientY / window.innerHeight;
+        // Scroll animation
+        function revealOnScroll() {
+            const sections = document.querySelectorAll('section');
             
-            shapes.forEach((shape, index) => {
-                const depth = (index + 1) / shapes.length;
-                const moveX = mouseX * depth * 100;
-                const moveY = mouseY * depth * 100;
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
                 
-                shape.style.transform = `translate(${moveX}px, ${moveY}px)`;
+                if (sectionTop < windowHeight * 0.75) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                } else {
+                    section.style.opacity = '0';
+                    section.style.transform = 'translateY(50px)';
+                }
             });
         }
 
-        // Handle terminal commands
-        function handleTerminalCommand(command) {
-            const commandLower = command.toLowerCase().trim();
-            let response = '';
-            
-            if (commandLower === '') {
-                return;
-            }
-            
-            if (commandLower === 'clear') {
-                // Clear terminal except for the input line
-                while (terminalBody.children.length > 1) {
-                    terminalBody.removeChild(terminalBody.firstChild);
-                }
-                return;
-            }
-            
-            if (commandLower === 'exit') {
-                closeTerminal();
-                return;
-            }
-            
-            if (terminalCommands[comman
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            cycleTaglines();
+            revealOnScroll();
+            window.addEventListener('scroll', revealOnScroll);
+        });
+    </script>
+</body>
+</html>
