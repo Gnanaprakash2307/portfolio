@@ -134,12 +134,13 @@
             z-index: 1000;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            background-color: rgba(var(--background-color-rgb), 0.8);
+            background-color: rgba(255, 255, 255, 0.8);
             transition: var(--transition);
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         [data-theme="dark"] header {
+            background-color: rgba(0, 0, 0, 0.8);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -212,7 +213,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 30% 50%, rgba(var(--primary-color-rgb), 0.1), transparent 50%);
+            background: radial-gradient(circle at 30% 50%, rgba(0, 113, 227, 0.1), transparent 50%);
             z-index: -1;
         }
 
@@ -296,7 +297,7 @@
         .language-level {
             width: 100px;
             height: 5px;
-            background-color: rgba(var(--primary-color-rgb), 0.2);
+            background-color: rgba(0, 113, 227, 0.2);
             border-radius: 5px;
             overflow: hidden;
         }
@@ -329,6 +330,17 @@
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
+        .project-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] .project-image {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
         .project-content {
             padding: 25px;
         }
@@ -351,16 +363,11 @@
         }
 
         .tech-tag {
-            background-color: rgba(var(--primary-color-rgb), 0.1);
+            background-color: rgba(0, 113, 227, 0.1);
             color: var(--primary-color);
             padding: 5px 10px;
             border-radius: 15px;
             font-size: 12px;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 10px;
         }
 
         /* Skills Section */
@@ -416,7 +423,7 @@
             content: '';
             position: absolute;
             width: 2px;
-            background-color: rgba(var(--primary-color-rgb), 0.3);
+            background-color: rgba(0, 113, 227, 0.3);
             top: 0;
             bottom: 0;
             left: 50%;
@@ -529,7 +536,7 @@
         .contact-icon {
             width: 40px;
             height: 40px;
-            background-color: rgba(var(--primary-color-rgb), 0.1);
+            background-color: rgba(0, 113, 227, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -570,7 +577,7 @@
         .form-textarea:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.2);
+            box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.2);
         }
 
         .form-textarea {
@@ -664,6 +671,160 @@
             width: 0%;
             z-index: 1001;
             transition: width 0.1s;
+        }
+
+        /* Areas of Interest Section */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .interest-item {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .interest-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .interest-icon {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        /* Achievements Section */
+        .achievements-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .achievement-item {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .achievement-icon {
+            font-size: 24px;
+            color: var(--primary-color);
+            min-width: 40px;
+            height: 40px;
+            background-color: rgba(0, 113, 227, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Resume Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: var(--background-color);
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            width: 80%;
+            max-width: 900px;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            transform: translateY(-50px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--primary-color);
+        }
+
+        .resume-content {
+            padding: 20px;
+        }
+
+        .resume-section {
+            margin-bottom: 30px;
+        }
+
+        .resume-section-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding-bottom: 10px;
+        }
+
+        [data-theme="dark"] .resume-section-title {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .resume-item {
+            margin-bottom: 20px;
+        }
+
+        .resume-item-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .resume-item-subtitle {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .resume-item-content {
+            font-size: 15px;
+        }
+
+        .resume-download {
+            text-align: center;
+            margin-top: 30px;
         }
 
         /* Responsive Styles */
@@ -760,8 +921,14 @@
 
             .projects-grid,
             .skills-grid,
-            .certifications-grid {
+            .certifications-grid,
+            .interests-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
             }
         }
 
@@ -794,6 +961,10 @@
             margin-bottom: 30px;
         }
 
+        .mt-20 {
+            margin-top: 20px;
+        }
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
@@ -804,23 +975,12 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: rgba(var(--primary-color-rgb), 0.5);
+            background: rgba(0, 113, 227, 0.5);
             border-radius: 5px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
             background: var(--primary-color);
-        }
-
-        /* CSS Variables with RGB values for opacity */
-        :root {
-            --primary-color-rgb: 0, 113, 227;
-            --background-color-rgb: 255, 255, 255;
-        }
-
-        [data-theme="dark"] {
-            --primary-color-rgb: 41, 151, 255;
-            --background-color-rgb: 0, 0, 0;
         }
     </style>
 </head>
@@ -839,6 +999,8 @@
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#education">Education</a></li>
+                    <li><a href="#interests">Interests</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
                     <li><a href="#certifications">Certifications</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -853,10 +1015,10 @@
             <div class="hero-content fade-in">
                 <h1 class="hero-title">Gnanaprakash B</h1>
                 <h2 class="hero-subtitle">Electrical Engineering & AI Enthusiast</h2>
-                <p class="hero-text">Bridging the gap between software and hardware technologies with innovative solutions.</p>
+                <p class="hero-text">Bridging the gap between software and hardware technologies with innovative solutions. Actively seeking an IT internship to apply and expand my technical expertise while contributing to impactful, forward-thinking projects.</p>
                 <div class="hero-btns">
                     <a href="#contact" class="btn">Contact Me</a>
-                    <a href="#" class="btn btn-outline">View Resume</a>
+                    <a href="#" class="btn btn-outline" id="viewResumeBtn">View Resume</a>
                 </div>
             </div>
         </div>
@@ -869,10 +1031,7 @@
             <div class="about-grid">
                 <div class="about-image fade-in">
                     <!-- Placeholder for profile image -->
-                    <svg width="100%" height="400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Profile Image">
-                        <rect width="100%" height="100%" fill="#868e96"></rect>
-                        <text x="50%" y="50%" fill="#dee2e6" dy=".3em" text-anchor="middle">Profile Image</text>
-                    </svg>
+                    <img src="/placeholder.svg?height=400&width=500" alt="Gnanaprakash B" />
                 </div>
                 <div class="about-content fade-in">
                     <h3>Professional Summary</h3>
@@ -924,6 +1083,21 @@
             <div class="projects-grid">
                 <!-- Project 1 -->
                 <div class="project-card fade-in">
+                    <img src="/placeholder.svg?height=180&width=300" alt="NewsNeural Project" class="project-image" />
+                    <div class="project-content">
+                        <h3 class="project-title">NewsNeural – AI-Driven News Bias Explorer</h3>
+                        <p class="project-description">An AI-powered platform that detects and visualizes media bias using NLP techniques. Aggregates news from diverse political sources, analyzes sentiment and subjectivity with models like VADER and BERT.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">AI</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card fade-in">
+                    <img src="/placeholder.svg?height=180&width=300" alt="SkillHaat Project" class="project-image" />
                     <div class="project-content">
                         <h3 class="project-title">SkillHaat</h3>
                         <p class="project-description">A platform connecting students with local skilled laborers. Features include UPI payment integration, a multilingual UI, a rating system, and AI-based job matching.</p>
@@ -932,15 +1106,12 @@
                             <span class="tech-tag">AI</span>
                             <span class="tech-tag">UPI</span>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-outline">Demo</a>
-                            <a href="https://github.com/gnanaprakashb" class="btn btn-outline">GitHub</a>
-                        </div>
                     </div>
                 </div>
                 
-                <!-- Project 2 -->
+                <!-- Project 3 -->
                 <div class="project-card fade-in">
+                    <img src="/placeholder.svg?height=180&width=300" alt="EduEase Project" class="project-image" />
                     <div class="project-content">
                         <h3 class="project-title">EduEase – AI Education App</h3>
                         <p class="project-description">An Android app for gamified, AI-powered learning for kids. It supports multilingual interfaces and interactive lessons, presented at the College Hackathon 2025.</p>
@@ -949,15 +1120,12 @@
                             <span class="tech-tag">AI</span>
                             <span class="tech-tag">Education</span>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-outline">Demo</a>
-                            <a href="https://github.com/gnanaprakashb" class="btn btn-outline">GitHub</a>
-                        </div>
                     </div>
                 </div>
                 
-                <!-- Project 3 -->
+                <!-- Project 4 -->
                 <div class="project-card fade-in">
+                    <img src="/placeholder.svg?height=180&width=300" alt="VibeNews Project" class="project-image" />
                     <div class="project-content">
                         <h3 class="project-title">VibeNews</h3>
                         <p class="project-description">A news summarizer app that uses NLP and sentiment analysis to personalize content based on user emotions. It tailors news feeds to enhance user experience.</p>
@@ -966,15 +1134,12 @@
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">Sentiment Analysis</span>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-outline">Demo</a>
-                            <a href="https://github.com/gnanaprakashb" class="btn btn-outline">GitHub</a>
-                        </div>
                     </div>
                 </div>
                 
-                <!-- Project 4 -->
+                <!-- Project 5 -->
                 <div class="project-card fade-in">
+                    <img src="/placeholder.svg?height=180&width=300" alt="Financial Advisor Chatbot" class="project-image" />
                     <div class="project-content">
                         <h3 class="project-title">Financial Advisor Chatbot</h3>
                         <p class="project-description">A Python-based conversational AI offering personal budgeting tips and finance advice, presented at the College Hackathon 2025.</p>
@@ -983,15 +1148,12 @@
                             <span class="tech-tag">AI</span>
                             <span class="tech-tag">Finance</span>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-outline">Demo</a>
-                            <a href="https://github.com/gnanaprakashb" class="btn btn-outline">GitHub</a>
-                        </div>
                     </div>
                 </div>
                 
-                <!-- Project 5 -->
+                <!-- Project 6 -->
                 <div class="project-card fade-in">
+                    <img src="/placeholder.svg?height=180&width=300" alt="Ace Project" class="project-image" />
                     <div class="project-content">
                         <h3 class="project-title">Ace – Voice-Controlled Assistant</h3>
                         <p class="project-description">An AI-powered robot capable of voice commands, integrating speech recognition, basic task execution, and natural language processing.</p>
@@ -1000,15 +1162,12 @@
                             <span class="tech-tag">NLP</span>
                             <span class="tech-tag">Robotics</span>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-outline">Demo</a>
-                            <a href="https://github.com/gnanaprakashb" class="btn btn-outline">GitHub</a>
-                        </div>
                     </div>
                 </div>
                 
-                <!-- Project 6 -->
+                <!-- Project 7 -->
                 <div class="project-card fade-in">
+                    <img src="/placeholder.svg?height=180&width=300" alt="DriftX Project" class="project-image" />
                     <div class="project-content">
                         <h3 class="project-title">DriftX – RC Racing Bot</h3>
                         <p class="project-description">A versatile competition-grade RC bot with smart mode switching between manual remote control and autonomous navigation using PID line following.</p>
@@ -1016,10 +1175,6 @@
                             <span class="tech-tag">Embedded Systems</span>
                             <span class="tech-tag">PID Control</span>
                             <span class="tech-tag">Robotics</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-outline">Demo</a>
-                            <a href="https://github.com/gnanaprakashb" class="btn btn-outline">GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -1176,18 +1331,102 @@
         </div>
     </section>
 
+    <!-- Areas of Interest Section -->
+    <section id="interests" class="interests">
+        <div class="container">
+            <h2 class="section-title fade-in">Areas of Interest</h2>
+            <div class="interests-grid fade-in">
+                <div class="interest-item">
+                    <div class="interest-icon">🤖</div>
+                    <h3>Artificial Intelligence & Data Science</h3>
+                </div>
+                <div class="interest-item">
+                    <div class="interest-icon">💻</div>
+                    <h3>Full-Stack Development</h3>
+                </div>
+                <div class="interest-item">
+                    <div class="interest-icon">🔌</div>
+                    <h3>Embedded Systems & IoT</h3>
+                </div>
+                <div class="interest-item">
+                    <div class="interest-icon">🔒</div>
+                    <h3>Cybersecurity Fundamentals</h3>
+                </div>
+                <div class="interest-item">
+                    <div class="interest-icon">🌐</div>
+                    <h3>Open Source Contribution</h3>
+                </div>
+                <div class="interest-item">
+                    <div class="interest-icon">🎨</div>
+                    <h3>Product Design</h3>
+                </div>
+                <div class="interest-item">
+                    <div class="interest-icon">🔍</div>
+                    <h3>Reverse Engineering</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <h2 class="section-title fade-in">Achievements</h2>
+            <div class="achievements-list fade-in">
+                <div class="achievement-item">
+                    <div class="achievement-icon">🏆</div>
+                    <div>
+                        <h3>Built 10+ mini projects using Python</h3>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-icon">🏆</div>
+                    <div>
+                        <h3>Building two Bot Remote-Controlled cars</h3>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-icon">🏆</div>
+                    <div>
+                        <h3>Solved 100+ LeetCode problems in algorithms and data structures</h3>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-icon">🏆</div>
+                    <div>
+                        <h3>Chess – 2nd Prize, District-Level Competition</h3>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-icon">🏆</div>
+                    <div>
+                        <h3>Member – Renewable Energy Club, MSEC</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Certifications Section -->
     <section id="certifications" class="certifications">
         <div class="container">
             <h2 class="section-title fade-in">Certifications</h2>
             <div class="certifications-grid fade-in">
                 <div class="certification-card">
-                    <div class="certification-title">Introduction to Generative AI</div>
-                    <div class="certification-issuer">Google Cloud</div>
+                    <div class="certification-title">Data Analysis with Python</div>
+                    <div class="certification-issuer">IBM (May 2025)</div>
+                </div>
+                <div class="certification-card">
+                    <div class="certification-title">Python 101 for Data Science</div>
+                    <div class="certification-issuer">IBM (May 2025)</div>
                 </div>
                 <div class="certification-card">
                     <div class="certification-title">Introduction to Artificial Intelligence</div>
                     <div class="certification-issuer">IBM</div>
+                </div>
+                <div class="certification-card">
+                    <div class="certification-title">Introduction to Generative AI</div>
+                    <div class="certification-issuer">Google Cloud</div>
                 </div>
                 <div class="certification-card">
                     <div class="certification-title">Applied Data Science in Python</div>
@@ -1207,7 +1446,7 @@
                 </div>
                 <div class="certification-card">
                     <div class="certification-title">Introduction to Internet of things</div>
-                    <div class="certification-issuer">NPTEL</div>
+                    <div class="certification-issuer">NPTEL (Ongoing)</div>
                 </div>
             </div>
         </div>
@@ -1254,6 +1493,13 @@
                             <p><a href="https://github.com/gnanaprakashb" target="_blank">github.com/gnanaprakashb</a></p>
                         </div>
                     </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🌐</div>
+                        <div>
+                            <h3>Website</h3>
+                            <p><a href="https://gnanaprakashb.netlify.app/" target="_blank">gnanaprakashb.netlify.app</a></p>
+                        </div>
+                    </div>
                 </div>
                 <form class="contact-form" id="contactForm">
                     <div class="form-group">
@@ -1296,6 +1542,121 @@
         <i id="themeIcon">🌙</i>
     </div>
 
+    <!-- Resume Modal -->
+    <div class="modal" id="resumeModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <div class="resume-content">
+                <h2 class="text-center mb-30">Gnanaprakash B - Resume</h2>
+                
+                <div class="resume-section">
+                    <h3 class="resume-section-title">Professional Summary</h3>
+                    <div class="resume-item">
+                        <p class="resume-item-content">
+                            Resourceful and driven Electrical Engineering student with a strong foundation in software development, artificial intelligence, and data science. Skilled in building innovative, user-centric applications and solving complex real-world problems through intelligent systems and modern programming practices. Passionate about bridging software and hardware technologies. Actively seeking an IT internship to apply and expand my technical expertise while contributing to impactful, forward-thinking projects.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="resume-section">
+                    <h3 class="resume-section-title">Education</h3>
+                    <div class="resume-item">
+                        <h4 class="resume-item-title">B.E. – Electrical and Electronics Engineering</h4>
+                        <p class="resume-item-subtitle">Meenakshi Sundararajan Engineering College, Chennai (Expected 2028)</p>
+                        <p class="resume-item-content">CGPA: 8.3</p>
+                    </div>
+                    <div class="resume-item">
+                        <h4 class="resume-item-title">12th Grade</h4>
+                        <p class="resume-item-subtitle">CSI St. Andrews Higher Secondary School, Arakkonam (2024)</p>
+                        <p class="resume-item-content">80%</p>
+                    </div>
+                    <div class="resume-item">
+                        <h4 class="resume-item-title">10th Grade</h4>
+                        <p class="resume-item-subtitle">TVKM High School, Tiruttani (2022)</p>
+                        <p class="resume-item-content">80%</p>
+                    </div>
+                </div>
+                
+                <div class="resume-section">
+                    <h3 class="resume-section-title">Technical Skills</h3>
+                    <div class="resume-item">
+                        <h4 class="resume-item-title">Languages</h4>
+                        <p class="resume-item-content">Python, C, C++, Java, HTML, CSS, MySQL</p>
+                    </div>
+                    <div class="resume-item">
+                        <h4 class="resume-item-title">Tools & Frameworks</h4>
+                        <p class="resume-item-content">MATLAB, Apache NetBeans, Android Studio, Git, Ubuntu/Linux</p>
+                    </div>
+                    <div class="resume-item">
+                        <h4 class="resume-item-title">Domains</h4>
+                        <p class="resume-item-content">AI Integration, Data Structures & Algorithms, GUI & Web Development, Embedded Systems</p>
+                    </div>
+                    <div class="resume-item">
+                        <h4 class="resume-item-title">Soft Skills</h4>
+                        <p class="resume-item-content">Communication, Teamwork, Adaptability, Problem Solving, Public Speaking</p>
+                    </div>
+                </div>
+                
+                <div class="resume-section">
+                    <h3 class="resume-section-title">Projects</h3>
+                    <div class="resume-item">
+                        <h4 class="resume-item-title">NewsNeural – AI-Driven News Bias Explorer (ongoing)</h4>
+                        <p class="resume-item-content">
+                            An AI-powered platform that detects and visualizes media bias using NLP techniques. Aggregates news from diverse political sources, analyzes sentiment and subjectivity with models like VADER and BERT, and presents comparative visualizations of bias across outlets. Promotes media transparency and critical thinking through interactive dashboards.
+                        </p>
+                    </div>
+                    <div class="resume-item">
+                        <h4 class="resume-item-title">SkillHaat (Lead Developer | Ongoing)</h4>
+                        <p class="resume-item-content">
+                            A platform connecting students with local skilled laborers. Features include UPI payment integration, a multilingual UI, a rating system, and AI-based job matching. The project aims to empower local businesses and bridge skill gaps in communities.
+                        </p>
+                    </div>
+                    <div class="resume-item">
+                        <h4 class="resume-item-title">EduEase – AI Education App</h4>
+                        <p class="resume-item-content">
+                            An Android app for gamified, AI-powered learning for kids. It supports multilingual interfaces and interactive lessons, presented at the College Hackathon 2025. The app adapts to individual learning paces, enhancing engagement and retention.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="resume-section">
+                    <h3 class="resume-section-title">Certifications</h3>
+                    <div class="resume-item">
+                        <p class="resume-item-content">
+                            • IBM – Data Analysis with Python (May 2025)<br>
+                            • IBM – Python 101 for Data Science (May 2025)<br>
+                            • IBM – Introduction to Artificial Intelligence<br>
+                            • Google Cloud – Introduction to Generative AI<br>
+                            • Simplilearn – Introduction to Applied Data Science in Python<br>
+                            • Simplilearn – Introduction to Cybersecurity<br>
+                            • Simplilearn – Introduction to IoT<br>
+                            • NPTEL – Shell Programming in Linux (Ongoing)<br>
+                            • NPTEL – Introduction to Internet of Things (Ongoing)
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="resume-section">
+                    <h3 class="resume-section-title">Contact Information</h3>
+                    <div class="resume-item">
+                        <p class="resume-item-content">
+                            <strong>Address:</strong> 27, 20 2nd Street, Murugappa Nagar, Tiruttani, Tamil Nadu – 631209<br>
+                            <strong>Phone:</strong> +91 6374151499<br>
+                            <strong>Email:</strong> gnanaprakash230706@gmail.com<br>
+                            <strong>LinkedIn:</strong> gnanaprakash-babu-b50321341<br>
+                            <strong>GitHub:</strong> github.com/gnanaprakashb<br>
+                            <strong>Website:</strong> https://gnanaprakashb.netlify.app/
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="resume-download">
+                    <a href="#" class="btn" id="downloadResumeBtn">Download Resume</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- JavaScript -->
     <script>
         // DOM Elements
@@ -1307,6 +1668,10 @@
         const themeIcon = document.getElementById('themeIcon');
         const contactForm = document.getElementById('contactForm');
         const fadeElements = document.querySelectorAll('.fade-in');
+        const viewResumeBtn = document.getElementById('viewResumeBtn');
+        const resumeModal = document.getElementById('resumeModal');
+        const closeModal = document.getElementById('closeModal');
+        const downloadResumeBtn = document.getElementById('downloadResumeBtn');
 
         // Mobile Menu Toggle
         mobileMenuBtn.addEventListener('click', () => {
@@ -1323,6 +1688,9 @@
             // Header Shadow on Scroll
             if (scrollTop > 50) {
                 header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = 'none';
+            }0,0,0.1)';
             } else {
                 header.style.boxShadow = 'none';
             }
@@ -1411,9 +1779,37 @@
             }
         });
 
+        // Resume Modal Functions
+        viewResumeBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            resumeModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        });
+
+        closeModal.addEventListener('click', () => {
+            resumeModal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        });
+
+        // Close modal when clicking outside of it
+        window.addEventListener('click', (e) => {
+            if (e.target === resumeModal) {
+                resumeModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Download Resume functionality (demo)
+        downloadResumeBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Resume download would start here in a real application.');
+        });
+
         // Smooth Scrolling for Navigation Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') return; // Skip for # links
+                
                 e.preventDefault();
                 
                 // Close mobile menu if open
